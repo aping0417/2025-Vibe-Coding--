@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳平瀚 Ping-Han Chen | 資訊工程 & 營運支援</title>
+    <meta name="description" content="陳平瀚的個人履歷 - 結合工程思維與營運支援能力的資訊工程系學生">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#4FC3F7',  // 水藍色
+                            pink: '#F48FB1',  // 粉色
+                            dark: '#263238',
+                            light: '#F5F7FA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #4FC3F7, #F48FB1);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #29B6F6, #F06292);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #29B6F6 0%, #F06292 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(79, 195, 247, 0.2);
+        }
+
+        /* Timeline Dot Pulse */
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            border: 2px solid #F48FB1;
+            opacity: 0;
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-dark bg-slate-50 overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold tracking-wider group">
+                        <span class="text-brand-blue group-hover:text-brand-pink transition-colors">Ping-Han</span><span class="text-brand-pink group-hover:text-brand-blue transition-colors">.Chen</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">關於我</a>
+                    <a href="#value" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">個人優勢</a>
+                    <a href="#skills" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">技能</a>
+                    <a href="#experience" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">經歷</a>
+                    <a href="#works" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">專案</a>
+                    <a href="#contact" class="px-6 py-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-pink text-white font-medium hover:shadow-lg hover:opacity-90 transition-all">聯絡我</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-blue focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">關於我</a>
+                <a href="#value" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">個人優勢</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">技能</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">經歷</a>
+                <a href="#works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">專案</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-brand-pink font-bold">聯絡我</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-0 left-0 -ml-20 -mt-20 w-72 h-72 bg-brand-blue opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-brand-pink opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-20 w-72 h-72 bg-purple-300 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left order-2 lg:order-1 animate-fade-in-up">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-brand-blue text-sm font-semibold mb-4 tracking-wide shadow-sm">
+                        資訊相關實習 | VTuber 產業營運 | 軟體工程
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        我是 <span class="gradient-text">陳平瀚</span>
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-medium text-gray-700 mb-6">
+                        Ping-Han Chen
+                    </h2>
+                    <div class="mb-8">
+                        <p class="text-xl md:text-2xl font-semibold text-gray-800 italic">
+                            「穩住後台，讓前台更閃亮。」
+                        </p>
+                        <p class="text-base text-gray-500 mt-2">
+                             — 用工程思維把營運流程做得更順、更穩。
+                        </p>
+                    </div>
+                    
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 text-justify">
+                        就讀於真理大學資訊工程系。我擅長將需求拆解成可執行的步驟，並在高壓環境下維持穩定輸出。目前擁有外送中心營運派遣的實務經驗，習慣用數據與流程改善來解決問題。希望能將「工程能力 + 營運理解 + 溝通協作」結合，協助團隊創造最大價值。
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#works" class="px-8 py-3 rounded-full bg-brand-dark text-white font-medium hover:bg-gray-800 transition-colors shadow-lg">
+                            查看專案作品
+                        </a>
+                        <a href="#contact" class="px-8 py-3 rounded-full border-2 border-brand-pink text-brand-pink font-medium hover:bg-brand-pink hover:text-white transition-colors">
+                            與我聯繫
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-8 flex gap-6 justify-center lg:justify-start items-center">
+                        <a href="https://github.com/aping0417" target="_blank" class="text-gray-400 hover:text-brand-dark text-2xl transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:pinghan0417@gmail.com" class="text-gray-400 hover:text-brand-blue text-2xl transition-colors" title="Email"><i class="fas fa-envelope"></i></a>
+                        <!-- Discord Link Updated -->
+                        <a href="https://discord.com/users/411388019619397639" target="_blank" class="text-gray-400 hover:text-[#5865F2] text-2xl transition-colors" title="Discord: aping0417"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="order-1 lg:order-2 flex justify-center relative">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <!-- Decorative Ring -->
+                        <div class="absolute inset-0 rounded-full border-4 border-white shadow-xl z-10 overflow-hidden bg-white">
+                            <!-- Placeholder Avatar -->
+                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-pink-50 flex items-end justify-center">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=PingHan&backgroundColor=b6e3f4" alt="Ping-Han Chen" class="w-full h-full object-cover transform translate-y-2">
+                            </div>
+                        </div>
+                        <!-- Color Blobs behind image -->
+                        <div class="absolute top-4 -right-4 w-full h-full rounded-full bg-brand-pink opacity-30 -z-10 blur-md"></div>
+                        <div class="absolute -bottom-4 -left-4 w-full h-full rounded-full bg-brand-blue opacity-30 -z-10 blur-md"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Value Proposition Section (New) -->
+    <section id="value" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-blue-50 hover:bg-blue-100 transition-colors">
+                    <div class="w-12 h-12 bg-brand-blue text-white rounded-full flex items-center justify-center text-xl mx-auto mb-4">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">穩定執行</h3>
+                    <p class="text-gray-600">抗壓性高、細心負責，確保每一項任務都能如期如質完成。</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-pink-50 hover:bg-pink-100 transition-colors">
+                    <div class="w-12 h-12 bg-brand-pink text-white rounded-full flex items-center justify-center text-xl mx-auto mb-4">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">資料整理</h3>
+                    <p class="text-gray-600">擅長將繁雜資訊過濾雜訊，整理成主管與團隊易懂的重點報表。</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-purple-50 hover:bg-purple-100 transition-colors">
+                    <div class="w-12 h-12 bg-purple-400 text-white rounded-full flex items-center justify-center text-xl mx-auto mb-4">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">落地實作</h3>
+                    <p class="text-gray-600">將抽象需求轉化為可用功能，無論是程式腳本或營運流程優化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">專業技能</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-brand-blue to-brand-pink mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-600">程式開發 x 工具應用 x 職場軟實力</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Coding -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-brand-blue text-2xl mb-6">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">程式語言 & 開發</h3>
+                    <p class="text-gray-500 mb-6 text-sm">具備自動化腳本撰寫與資料庫操作能力。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-50 text-brand-blue text-sm rounded-md border border-blue-100">Python</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-blue text-sm rounded-md border border-blue-100">SQL / SQLite</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-blue text-sm rounded-md border border-blue-100">Java</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
+                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-brand-pink text-2xl mb-6">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">工具 & 技術</h3>
+                    <p class="text-gray-500 mb-6 text-sm">熟悉協作工具與多媒體串接技術。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-50 text-brand-pink text-sm rounded-md border border-pink-100">Git / GitHub</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-pink text-sm rounded-md border border-pink-100">Discord Bot Dev</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-pink text-sm rounded-md border border-pink-100">yt-dlp / FFmpeg</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-pink text-sm rounded-md border border-pink-100">OBS 直播</span>
+                        <span class="px-3 py-1 bg-gray-50 text-brand-pink text-sm rounded-md border border-pink-100">MS Office</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-500 text-2xl mb-6">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">職場軟實力</h3>
+                    <p class="text-gray-500 mb-6 text-sm">在快節奏環境中保持清晰邏輯與溝通。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-50 text-purple-500 text-sm rounded-md border border-purple-100">跨單位溝通協調</span>
+                        <span class="px-3 py-1 bg-gray-50 text-purple-500 text-sm rounded-md border border-purple-100">排班與人力調度</span>
+                        <span class="px-3 py-1 bg-gray-50 text-purple-500 text-sm rounded-md border border-purple-100">數據報表彙整</span>
+                        <span class="px-3 py-1 bg-gray-50 text-purple-500 text-sm rounded-md border border-purple-100">細心與抗壓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">學經歷</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-brand-blue to-brand-pink mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative space-y-12">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform md:-translate-x-1/2"></div>
+
+                <!-- Education -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 w-full pl-12 md:pl-0">
+                        <h3 class="text-xl font-bold text-gray-800">真理大學</h3>
+                        <p class="text-brand-blue font-medium">資訊工程系 學士</p>
+                        <p class="text-gray-500 text-sm mt-2">在學中 / 應屆畢業</p>
+                    </div>
+                    <div class="timeline-dot absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-brand-blue transform md:-translate-x-1/2 z-10"></div>
+                    <div class="flex-1 md:pl-12 w-full pl-12 md:pl-0">
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-brand-blue text-sm rounded-full font-medium">Education</span>
+                    </div>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 w-full pl-12 md:pl-0 md:order-1 order-2">
+                        <span class="inline-block px-3 py-1 bg-pink-100 text-brand-pink text-sm rounded-full font-medium">Experience</span>
+                    </div>
+                    <div class="timeline-dot absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-brand-pink transform md:-translate-x-1/2 z-10 md:order-2 order-1"></div>
+                    <div class="flex-1 md:pl-12 w-full pl-12 md:pl-0 md:order-3 order-3">
+                        <h3 class="text-xl font-bold text-gray-800">KFC 外送中心</h3>
+                        <p class="text-brand-pink font-medium">派遣 / 營運支援（兼職）</p>
+                        <ul class="text-gray-500 text-sm mt-3 space-y-2 list-disc list-inside">
+                            <li><strong>人力與資源調度：</strong>依尖離峰需求調整人力，協助外包決策。</li>
+                            <li><strong>數據監控：</strong>追蹤工時與訂單量，優化外送效率與成本。</li>
+                            <li><strong>溝通協調：</strong>協調餐廳與外送端，確保餐期運作順暢。</li>
+                            <li><strong>報表彙整：</strong>定期整理營運數據 (Excel/PPT)，協助管理決策。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="works" class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">專案與實務</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-brand-blue to-brand-pink mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Changed Grid to accommodate 3 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Project 1: Discord Bot -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="bg-gradient-to-r from-[#5865F2] to-[#7289da] h-48 flex items-center justify-center text-white">
+                        <i class="fab fa-discord text-6xl"></i>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-800">音樂機器人 <br><span class="text-sm font-normal text-gray-500">humbo_Bot</span></h3>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">個人專題</span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-justify">
+                            功能完整的 Discord 音樂機器人。解決大量歌單延遲問題，提供直觀按鈕介面。
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>互動體驗：</strong> 斜線指令與按鈕 UI。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>資料管理：</strong> SQLite 管理專屬歌單。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效能優化：</strong> 播放清單 Lazy loading。</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">SQLite</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">yt-dlp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Operations Data (Derived from Exp) -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="bg-gradient-to-r from-teal-400 to-green-400 h-48 flex items-center justify-center text-white">
+                        <i class="fas fa-chart-line text-6xl"></i>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-800">營運數據自動化 <br><span class="text-sm font-normal text-gray-500">Operations Data</span></h3>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">實務應用</span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-justify">
+                            將外送平台的原始數據轉化為可視化報表，優化排班與決策流程。
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效率提升：</strong> 自動化彙整報表，減少工時。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>決策輔助：</strong> 分析尖離峰數據以分配人力。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>溝通工具：</strong> 產出易讀圖表供團隊參考。</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Excel</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Streaming/OBS (Derived from Skills) -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="bg-gradient-to-r from-pink-400 to-purple-500 h-48 flex items-center justify-center text-white">
+                        <i class="fas fa-video text-6xl"></i>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-800">直播實況整合 <br><span class="text-sm font-normal text-gray-500">Streaming Tools</span></h3>
+                            <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">技術整合</span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-justify">
+                            針對直播需求設計的場景與互動工具，提升觀眾體驗與社群連動。
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>場景設計：</strong> OBS 場景配置與轉場設定。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>社群連動：</strong> Discord Webhook 開台通知。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>影音處理：</strong> 運用 FFmpeg 處理相關素材。</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">OBS</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Webhook</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Streaming</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-pink-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                 <div class="p-8 md:p-12">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold mb-4">有興趣合作嗎？</h2>
+                        <p class="text-gray-600">無論是實習機會、專案合作或 VTuber 產業交流，都歡迎聯繫！</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- 已更新：加入 subject 參數，點擊後會自動開啟寫信視窗並填好主旨 -->
+                        <a href="mailto:pinghan0417@gmail.com?subject=%E4%BE%86%E8%87%AA%E5%80%8B%E4%BA%BA%E7%B6%B2%E7%AB%99%E7%9A%84%E8%81%AF%E7%B9%AB&body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%88%91%E6%83%B3%E8%81%AF%E7%B9%AB%E4%BD%A0%E8%AB%87%EF%BC%9A%0D%0A%0D%0A%EF%BC%88%E8%AB%8B%E5%9C%A8%E6%AD%A4%E8%BC%B8%E5%85%A5%E5%85%A7%E5%AE%B9%EF%BC%89%0D%0A" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group">
+                            <div class="w-12 h-12 bg-white text-brand-blue rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-medium text-gray-800 text-sm break-all">pinghan0417@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://discord.com/users/YOUR_DISCORD_USER_ID" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-purple-50 transition-colors group">
+                            <div class="w-12 h-12 bg-white text-[#5865F2] rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">Discord</p>
+                                <p class="font-medium text-gray-800">aping0417</p>
+                            </div>
+                        </a>
+
+                        <a href="https://line.me/ti/p/~hank0417hank" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors group">
+                            <div class="w-12 h-12 bg-white text-[#00C300] rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">LINE</p>
+                                <p class="font-medium text-gray-800">點擊加入好友</p>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/aping0417" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-200 transition-colors group">
+                            <div class="w-12 h-12 bg-white text-gray-800 rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">GitHub</p>
+                                <p class="font-medium text-gray-800">aping0417</p>
+                            </div>
+                        </a>
+                    </div>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>&copy; 2026 Ping-Han Chen. All rights reserved. <br class="sm:hidden"> Designed with <i class="fas fa-heart text-brand-pink mx-1"></i> & Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Smooth Scroll specific behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar blur effect on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
