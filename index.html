@@ -24,8 +24,8 @@
                 extend: {
                     colors: {
                         brand: {
-                            blue: '#4FC3F7',  // 水藍色
-                            pink: '#F48FB1',  // 粉色
+                            blue: '#4FC3F7',
+                            pink: '#F48FB1',
                             dark: '#263238',
                             light: '#F5F7FA'
                         }
@@ -55,7 +55,6 @@
     </script>
 
     <style>
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -91,7 +90,6 @@
             box-shadow: 0 10px 20px rgba(79, 195, 247, 0.2);
         }
 
-        /* Timeline Dot Pulse */
         .timeline-dot::after {
             content: '';
             position: absolute;
@@ -104,6 +102,7 @@
             opacity: 0;
             animation: pulse-ring 2s infinite;
         }
+
         @keyframes pulse-ring {
             0% { transform: scale(0.8); opacity: 0.5; }
             100% { transform: scale(1.5); opacity: 0; }
@@ -116,14 +115,12 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-2xl font-bold tracking-wider group">
                         <span class="text-brand-blue group-hover:text-brand-pink transition-colors">Ping-Han</span><span class="text-brand-pink group-hover:text-brand-blue transition-colors">.Chen</span>
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#about" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">關於我</a>
                     <a href="#value" class="text-gray-600 hover:text-brand-blue transition-colors font-medium">個人優勢</a>
@@ -133,7 +130,6 @@
                     <a href="#contact" class="px-6 py-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-pink text-white font-medium hover:shadow-lg hover:opacity-90 transition-all">聯絡我</a>
                 </div>
 
-                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-blue focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
@@ -142,7 +138,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">關於我</a>
@@ -157,14 +152,12 @@
 
     <!-- Hero Section -->
     <header id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Blobs -->
         <div class="absolute top-0 left-0 -ml-20 -mt-20 w-72 h-72 bg-brand-blue opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-brand-pink opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-20 w-72 h-72 bg-purple-300 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-brand-pink opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute -bottom-32 left-20 w-72 h-72 bg-purple-300 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
                 <div class="text-center lg:text-left order-2 lg:order-1 animate-fade-in-up">
                     <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-brand-blue text-sm font-semibold mb-4 tracking-wide shadow-sm">
                         資訊相關實習 | VTuber 產業營運 | 軟體工程
@@ -188,35 +181,39 @@
                         就讀於真理大學資訊工程系。我擅長將需求拆解成可執行的步驟，並在高壓環境下維持穩定輸出。目前擁有外送中心營運派遣的實務經驗，習慣用數據與流程改善來解決問題。希望能將「工程能力 + 營運理解 + 溝通協作」結合，協助團隊創造最大價值。
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#works" class="px-8 py-3 rounded-full bg-brand-dark text-white font-medium hover:bg-gray-800 transition-colors shadow-lg">
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start mt-8">
+                        <a href="#works"
+                           class="px-6 py-3 rounded-full bg-sky-500 text-white font-semibold shadow-lg hover:bg-sky-600 transition duration-300">
                             查看專案作品
                         </a>
-                        <a href="#contact" class="px-8 py-3 rounded-full border-2 border-brand-pink text-brand-pink font-medium hover:bg-brand-pink hover:text-white transition-colors">
+
+                        <a href="https://drive.google.com/drive/folders/157IWiPH09dRcTUVuLrqbDLM6ZobQ1ZIW"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="px-6 py-3 rounded-full bg-white text-sky-700 font-semibold border border-sky-200 shadow-lg hover:bg-sky-50 transition duration-300">
+                            完整作品集｜Google Drive
+                        </a>
+
+                        <a href="#contact"
+                           class="px-6 py-3 rounded-full bg-gray-900 text-white font-semibold shadow-lg hover:bg-gray-800 transition duration-300">
                             與我聯繫
                         </a>
                     </div>
                     
-                    <!-- Social Links -->
                     <div class="mt-8 flex gap-6 justify-center lg:justify-start items-center">
-                        <a href="https://github.com/aping0417" target="_blank" class="text-gray-400 hover:text-brand-dark text-2xl transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/aping0417" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-dark text-2xl transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
                         <a href="mailto:pinghan0417@gmail.com" class="text-gray-400 hover:text-brand-blue text-2xl transition-colors" title="Email"><i class="fas fa-envelope"></i></a>
-                        <!-- Discord Link Updated -->
-                        <a href="https://discord.com/users/411388019619397639" target="_blank" class="text-gray-400 hover:text-[#5865F2] text-2xl transition-colors" title="Discord: aping0417"><i class="fab fa-discord"></i></a>
+                        <a href="https://discord.com/users/411388019619397639" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#5865F2] text-2xl transition-colors" title="Discord: aping0417"><i class="fab fa-discord"></i></a>
                     </div>
                 </div>
 
-                <!-- Image -->
                 <div class="order-1 lg:order-2 flex justify-center relative">
                     <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                        <!-- Decorative Ring -->
                         <div class="absolute inset-0 rounded-full border-4 border-white shadow-xl z-10 overflow-hidden bg-white">
-                            <!-- Placeholder Avatar -->
                             <div class="w-full h-full bg-gradient-to-br from-blue-50 to-pink-50 flex items-end justify-center">
                                 <img src="https://api.dicebear.com/7.x/notionists/svg?seed=PingHan&backgroundColor=b6e3f4" alt="Ping-Han Chen" class="w-full h-full object-cover transform translate-y-2">
                             </div>
                         </div>
-                        <!-- Color Blobs behind image -->
                         <div class="absolute top-4 -right-4 w-full h-full rounded-full bg-brand-pink opacity-30 -z-10 blur-md"></div>
                         <div class="absolute -bottom-4 -left-4 w-full h-full rounded-full bg-brand-blue opacity-30 -z-10 blur-md"></div>
                     </div>
@@ -225,7 +222,7 @@
         </div>
     </header>
 
-    <!-- Value Proposition Section (New) -->
+    <!-- Value -->
     <section id="value" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -254,7 +251,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="skills" class="py-20 bg-brand-light relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -264,7 +261,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Coding -->
                 <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
                     <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-brand-blue text-2xl mb-6">
                         <i class="fas fa-laptop-code"></i>
@@ -278,7 +274,6 @@
                     </div>
                 </div>
 
-                <!-- Tools -->
                 <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
                     <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-brand-pink text-2xl mb-6">
                         <i class="fas fa-toolbox"></i>
@@ -294,7 +289,6 @@
                     </div>
                 </div>
 
-                <!-- Soft Skills -->
                 <div class="bg-white p-8 rounded-2xl card-hover shadow-sm">
                     <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-500 text-2xl mb-6">
                         <i class="fas fa-users-cog"></i>
@@ -312,7 +306,7 @@
         </div>
     </section>
 
-    <!-- Experience & Education Section -->
+    <!-- Experience -->
     <section id="experience" class="py-20 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -321,10 +315,8 @@
             </div>
 
             <div class="relative space-y-12">
-                <!-- Vertical Line -->
                 <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform md:-translate-x-1/2"></div>
 
-                <!-- Education -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between group">
                     <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 w-full pl-12 md:pl-0">
                         <h3 class="text-xl font-bold text-gray-800">真理大學</h3>
@@ -337,7 +329,6 @@
                     </div>
                 </div>
 
-                <!-- Work Experience -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between group">
                     <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 w-full pl-12 md:pl-0 md:order-1 order-2">
                         <span class="inline-block px-3 py-1 bg-pink-100 text-brand-pink text-sm rounded-full font-medium">Experience</span>
@@ -358,7 +349,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="works" class="py-20 bg-brand-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -366,9 +357,20 @@
                 <div class="w-16 h-1 bg-gradient-to-r from-brand-blue to-brand-pink mx-auto rounded-full"></div>
             </div>
 
-            <!-- Changed Grid to accommodate 3 items -->
+            <div class="mt-6 mb-10 text-center">
+                <p class="text-gray-600 text-base md:text-lg mb-4">
+                    更多完整作品、PDF 簡報、自我介紹與補充資料，
+                    歡迎查看我的 Google 雲端作品集。
+                </p>
+                <a href="https://drive.google.com/drive/folders/157IWiPH09dRcTUVuLrqbDLM6ZobQ1ZIW"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block px-6 py-3 rounded-full bg-sky-100 text-sky-800 font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                    開啟作品集資料夾
+                </a>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <!-- Project 1: Discord Bot -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
                     <div class="bg-gradient-to-r from-[#5865F2] to-[#7289da] h-48 flex items-center justify-center text-white">
                         <i class="fab fa-discord text-6xl"></i>
@@ -382,9 +384,9 @@
                             功能完整的 Discord 音樂機器人。解決大量歌單延遲問題，提供直觀按鈕介面。
                         </p>
                         <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>互動體驗：</strong> 斜線指令與按鈕 UI。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>資料管理：</strong> SQLite 管理專屬歌單。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效能優化：</strong> 播放清單 Lazy loading。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>互動體驗：</strong>斜線指令與按鈕 UI。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>資料管理：</strong>SQLite 管理專屬歌單。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效能優化：</strong>播放清單 Lazy loading。</p>
                         </div>
                         <div class="flex flex-wrap gap-2 mt-auto">
                             <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
@@ -394,7 +396,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Operations Data (Derived from Exp) -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
                     <div class="bg-gradient-to-r from-teal-400 to-green-400 h-48 flex items-center justify-center text-white">
                         <i class="fas fa-chart-line text-6xl"></i>
@@ -408,9 +409,9 @@
                             將外送平台的原始數據轉化為可視化報表，優化排班與決策流程。
                         </p>
                         <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效率提升：</strong> 自動化彙整報表，減少工時。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>決策輔助：</strong> 分析尖離峰數據以分配人力。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>溝通工具：</strong> 產出易讀圖表供團隊參考。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>效率提升：</strong>自動化彙整報表，減少工時。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>決策輔助：</strong>分析尖離峰數據以分配人力。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>溝通工具：</strong>產出易讀圖表供團隊參考。</p>
                         </div>
                         <div class="flex flex-wrap gap-2 mt-auto">
                             <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Excel</span>
@@ -420,7 +421,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Streaming/OBS (Derived from Skills) -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
                     <div class="bg-gradient-to-r from-pink-400 to-purple-500 h-48 flex items-center justify-center text-white">
                         <i class="fas fa-video text-6xl"></i>
@@ -434,9 +434,9 @@
                             針對直播需求設計的場景與互動工具，提升觀眾體驗與社群連動。
                         </p>
                         <div class="space-y-2 mb-6 text-sm text-gray-600 flex-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>場景設計：</strong> OBS 場景配置與轉場設定。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>社群連動：</strong> Discord Webhook 開台通知。</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>影音處理：</strong> 運用 FFmpeg 處理相關素材。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>場景設計：</strong>OBS 場景配置與轉場設定。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>社群連動：</strong>Discord Webhook 開台通知。</p>
+                            <p><i class="fas fa-check text-green-500 mr-2"></i><strong>影音處理：</strong>運用 FFmpeg 處理相關素材。</p>
                         </div>
                         <div class="flex flex-wrap gap-2 mt-auto">
                             <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">OBS</span>
@@ -445,24 +445,23 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-pink-50">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                 <div class="p-8 md:p-12">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="p-8 md:p-12">
                     <div class="text-center mb-10">
                         <h2 class="text-3xl font-bold mb-4">有興趣合作嗎？</h2>
                         <p class="text-gray-600">無論是實習機會、專案合作或 VTuber 產業交流，都歡迎聯繫！</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <!-- 已更新：加入 subject 參數，點擊後會自動開啟寫信視窗並填好主旨 -->
-                        <a href="mailto:pinghan0417@gmail.com?subject=%E4%BE%86%E8%87%AA%E5%80%8B%E4%BA%BA%E7%B6%B2%E7%AB%99%E7%9A%84%E8%81%AF%E7%B9%AB&body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%88%91%E6%83%B3%E8%81%AF%E7%B9%AB%E4%BD%A0%E8%AB%87%EF%BC%9A%0D%0A%0D%0A%EF%BC%88%E8%AB%8B%E5%9C%A8%E6%AD%A4%E8%BC%B8%E5%85%A5%E5%85%A7%E5%AE%B9%EF%BC%89%0D%0A" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group">
+                        <a href="mailto:pinghan0417@gmail.com?subject=%E4%BE%86%E8%87%AA%E5%80%8B%E4%BA%BA%E7%B6%B2%E7%AB%99%E7%9A%84%E8%81%AF%E7%B9%AB&body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%98%AF%EF%BC%9A%0D%0A%0D%0A%E6%88%91%E6%83%B3%E8%81%AF%E7%B9%AB%E4%BD%A0%E8%AB%87%EF%BC%9A%0D%0A%0D%0A%EF%BC%88%E8%AB%8B%E5%9C%A8%E6%AD%A4%E8%BC%B8%E5%85%A5%E5%85%A7%E5%AE%B9%EF%BC%89%0D%0A"
+                           class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group">
                             <div class="w-12 h-12 bg-white text-brand-blue rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
                                 <i class="fas fa-envelope"></i>
                             </div>
@@ -472,7 +471,10 @@
                             </div>
                         </a>
                         
-                        <a href="https://discord.com/users/YOUR_DISCORD_USER_ID" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-purple-50 transition-colors group">
+                        <a href="https://discord.com/users/411388019619397639"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-purple-50 transition-colors group">
                             <div class="w-12 h-12 bg-white text-[#5865F2] rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
                                 <i class="fab fa-discord"></i>
                             </div>
@@ -482,7 +484,10 @@
                             </div>
                         </a>
 
-                        <a href="https://line.me/ti/p/~hank0417hank" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors group">
+                        <a href="https://line.me/ti/p/~hank0417hank"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors group">
                             <div class="w-12 h-12 bg-white text-[#00C300] rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
                                 <i class="fab fa-line"></i>
                             </div>
@@ -492,7 +497,10 @@
                             </div>
                         </a>
 
-                        <a href="https://github.com/aping0417" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-200 transition-colors group">
+                        <a href="https://github.com/aping0417"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-200 transition-colors group">
                             <div class="w-12 h-12 bg-white text-gray-800 rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
                                 <i class="fab fa-github"></i>
                             </div>
@@ -501,9 +509,22 @@
                                 <p class="font-medium text-gray-800">aping0417</p>
                             </div>
                         </a>
+
+                        <a href="https://drive.google.com/drive/folders/157IWiPH09dRcTUVuLrqbDLM6ZobQ1ZIW"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-sky-50 transition-colors group md:col-span-2">
+                            <div class="w-12 h-12 bg-white text-sky-600 rounded-full flex items-center justify-center shadow-sm text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">Portfolio</p>
+                                <p class="font-medium text-gray-800">完整作品集｜Google Drive</p>
+                            </div>
+                        </a>
                     </div>
-                 </div>
-             </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -513,9 +534,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -523,14 +542,12 @@
             menu.classList.toggle('hidden');
         });
 
-        // Close mobile menu when clicking a link
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
             });
         });
 
-        // Smooth Scroll specific behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -545,7 +562,6 @@
             });
         });
 
-        // Navbar blur effect on scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
